@@ -117,8 +117,8 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 #notes .bg-shade{background:linear-gradient(90deg,rgba(11,9,7,.96) 0%,rgba(11,9,7,.55) 22%,rgba(11,9,7,.06) 50%,rgba(11,9,7,.55) 78%,rgba(11,9,7,.96) 100%)}
 #pyramid .bg-video{opacity:1}
 #pyramid .bg-shade{background:radial-gradient(ellipse at 50% 50%,rgba(11,9,7,.8) 28%,rgba(11,9,7,.32) 100%)}
-#discovery .bg-video{opacity:.85}
-#discovery .bg-shade{background:linear-gradient(rgba(11,9,7,.8),rgba(11,9,7,.6) 45%,rgba(11,9,7,.88))}
+#discovery .bg-video{opacity:1}
+#discovery .bg-shade{background:linear-gradient(90deg,rgba(11,9,7,.94) 0%,rgba(11,9,7,.72) 40%,rgba(11,9,7,.2) 78%,rgba(11,9,7,.4) 100%)}
 
 /* NOTES — three columns with edge arrows */
 .notes-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:40px;align-items:center}
@@ -150,18 +150,14 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .story-visual .stamp{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:16px 20px;font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--text);background:linear-gradient(0deg,rgba(11,9,7,.85),transparent);z-index:2}
 
 /* PYRAMID */
-.pyr-grid{display:flex;flex-direction:column;align-items:center;gap:46px;max-width:780px;margin-inline:auto;text-align:center}
-.pyramid{width:100%;max-width:520px}
+.pyr-grid{display:flex;flex-direction:column;align-items:center;gap:40px;max-width:780px;margin-inline:auto;text-align:center}
 .pyr-detail{width:100%}
-.pyramid{display:flex;flex-direction:column;align-items:center;gap:8px}
-.tier{border:1px solid var(--line);padding:22px 10px;text-align:center;transition:.4s;clip-path:polygon(var(--c) 0,calc(100% - var(--c)) 0,100% 100%,0 100%);width:100%;background:rgba(11,9,7,.5)}
-.tier:nth-child(1){--c:38%;max-width:520px}
-.tier:nth-child(2){--c:18%;max-width:520px}
-.tier:nth-child(3){--c:0%;max-width:520px}
-.tier b{font-family:var(--display);font-weight:400;font-size:22px;display:block;color:var(--gold)}
-.tier span{font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--muted)}
-.tier.on{background:linear-gradient(180deg,rgba(201,164,92,.28),rgba(201,164,92,.08))}
-.tier.on span{color:var(--text)}
+.pyr-tabs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.ptab{display:flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11px;letter-spacing:.26em;padding:15px 26px;border:1px solid var(--line);transition:.3s;color:var(--text);background:rgba(11,9,7,.45);backdrop-filter:blur(4px)}
+.ptab:hover{border-color:var(--gold);color:var(--gold-soft)}
+.ptab.on{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.ptab .pm{font-family:var(--display);font-size:15px;color:var(--gold)}
+.ptab.on .pm{color:var(--ink)}
 .pyr-detail .time{font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:var(--gold)}
 .pyr-detail h3{font-size:clamp(26px,3vw,38px);margin:12px 0 16px}
 .pyr-detail p{color:#cfc4b1}
@@ -171,17 +167,18 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .ess{margin-top:8px;font-style:italic;color:var(--gold-soft);font-size:20px}
 
 /* DISCOVERY */
-.disc{text-align:center;background:radial-gradient(ellipse at 50% 0,rgba(201,164,92,.16),transparent 60%)}
+.disc{text-align:left;background:radial-gradient(ellipse at 50% 0,rgba(201,164,92,.16),transparent 60%)}
+.disc-inner{max-width:640px}
 .disc .mark{font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:var(--gold);display:inline-flex;align-items:center;gap:10px}
 .disc h2{font-size:clamp(40px,6vw,82px);line-height:1;margin:18px 0 22px}
 .disc h2 em{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--gold-soft);letter-spacing:0}
-.disc p{max-width:36em;margin:0 auto 40px;color:#cfc4b1}
+.disc p{max-width:36em;margin:0 0 40px;color:#cfc4b1}
 .cta-videos{display:flex;justify-content:center;gap:24px;margin:10px 0 40px;flex-wrap:wrap}
 .cta-videos figure{position:relative;width:min(340px,44%)}
 .cta-videos video{width:100%;height:auto;border:1px solid var(--line);border-radius:6px;filter:drop-shadow(0 24px 44px rgba(0,0,0,.6))}
 .cta-videos figcaption{font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--muted);margin-top:14px;text-transform:uppercase}
 .circle-mark{font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:var(--gold-soft);margin-bottom:14px;display:inline-flex;gap:10px;align-items:center}
-.perks{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-family:var(--sans);font-size:11px;letter-spacing:.24em;color:var(--muted);margin:10px 0 40px}
+.perks{display:flex;justify-content:flex-start;gap:26px;flex-wrap:wrap;font-family:var(--sans);font-size:11px;letter-spacing:.24em;color:var(--muted);margin:10px 0 40px}
 .perks span::before{content:"◆";color:var(--gold);margin-right:10px;font-size:8px;vertical-align:2px}
 
 /* FOOTER */
@@ -394,10 +391,10 @@ footer li a:hover{color:var(--text)}
   <div class="wrap">
     <div class="sec-head reveal" style="justify-content:center;text-align:center"><div><span class="eyebrow">Architecture · Section V</span><h2>The Olfactory Pyramid</h2></div></div>
     <div class="pyr-grid">
-      <div class="pyramid reveal" role="tablist">
-        <button class="tier on" data-tier="0" role="tab" aria-selected="true"><b>I</b><span>TOP NOTES</span></button>
-        <button class="tier" data-tier="1" role="tab" aria-selected="false"><b>II</b><span>HEART NOTES</span></button>
-        <button class="tier" data-tier="2" role="tab" aria-selected="false"><b>III</b><span>BASE NOTES</span></button>
+      <div class="pyr-tabs reveal" role="tablist">
+        <button class="ptab on" data-tier="0" role="tab" aria-selected="true"><span class="pm">I</span>TOP NOTES</button>
+        <button class="ptab" data-tier="1" role="tab" aria-selected="false"><span class="pm">II</span>HEART NOTES</button>
+        <button class="ptab" data-tier="2" role="tab" aria-selected="false"><span class="pm">III</span>BASE NOTES</button>
       </div>
       <div class="pyr-detail reveal" id="pyrDetail"></div>
     </div>
@@ -415,12 +412,14 @@ footer li a:hover{color:var(--text)}
   </video>
   <div class="bg-shade"></div>
   <div class="wrap reveal">
-    <span class="mark">◆ JANUARY / COLLECTION</span>
-    <h2>More Than a<br><em>Parfum.</em></h2>
-    <p>A sensory invocation of raw ingredients, rare botanicals and eternal Paris elegance — macerated in French oak for 180 days to unlock an unprecedented olfactory depth.</p>
-    <div class="circle-mark">◇ THE CIRCLE</div>
-    <div class="perks"><span>5 × 5 ML DISCOVERY VIALS</span><span>$45 VOUCHER CREDITED BACK</span><span>INSURED GLOBAL DELIVERY</span></div>
-    <button class="btn solid" data-add="6">A Sensual Journey Starts Here</button>
+    <div class="disc-inner">
+      <span class="mark">◆ JANUARY / COLLECTION</span>
+      <h2>More Than a<br><em>Parfum.</em></h2>
+      <p>A sensory invocation of raw ingredients, rare botanicals and eternal Paris elegance — macerated in French oak for 180 days to unlock an unprecedented olfactory depth.</p>
+      <div class="circle-mark">◇ THE CIRCLE</div>
+      <div class="perks"><span>5 × 5 ML DISCOVERY VIALS</span><span>$45 VOUCHER CREDITED BACK</span><span>INSURED GLOBAL DELIVERY</span></div>
+      <button class="btn solid" data-add="6">A Sensual Journey Starts Here</button>
+    </div>
   </div>
 </section>
 
@@ -487,7 +486,7 @@ const products = [
    video:'assets/product5_video.webm',poster:'assets/product5_poster.jpg',
    desc:'Black leather, vetiver and black pepper. Dry, dark and confident.',top:'Black Pepper, Elemi',heart:'Leather, Vetiver',base:'Oud, Ambergris'},
   {name:'Veltrix Royale Spray Extrait',short:'Royale',fam:'Amber · Gourmand',price:220,c1:'#7a4a0c',c2:'#f0c060',cap:'#c9a45c',glow:'rgba(240,192,96,.45)',
-   video:'assets/product_3d_animation.webm',poster:'assets/card_perfume_poster.jpg',
+   video:'assets/product_3d_animation.webm',poster:'assets/product6_poster.jpg',
    desc:'Golden amber, benzoin and a thread of vanilla. Warm without being sweet.',top:'Bergamot, Cardamom',heart:'Amber, Benzoin',base:'Vanilla, Tonka'},
   {name:'Discovery Set',fam:'5 × 5 ml vials',price:45,c1:'#6b3a12',c2:'#d89a4a',cap:'#c9a45c',glow:'rgba(201,164,92,.4)',hidden:true,
    desc:'Five of our signature scents in 5 ml vials.',top:'—',heart:'—',base:'—'}
@@ -635,7 +634,7 @@ const tiers=[
 let pyrIdx=0;
 function setTier(i){
   pyrIdx=(i+tiers.length)%tiers.length;
-  document.querySelectorAll('.tier').forEach(b=>{const on=b.dataset.tier==pyrIdx;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
+  document.querySelectorAll('.ptab').forEach(b=>{const on=b.dataset.tier==pyrIdx;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
   const d=tiers[pyrIdx];
   document.getElementById('pyrDetail').innerHTML=`<span class="time">${d.time}</span><h3>${d.title}</h3><p>${d.p}</p>
   <span class="eyebrow" style="color:var(--muted);display:block;margin-top:24px">Key Essence</span>
@@ -643,7 +642,7 @@ function setTier(i){
   <div class="pyr-meta"><div><span>DIFFUSION</span>${d.diff}</div><div><span>SILLAGE ARC</span>${d.arc}</div></div>`;
   document.getElementById('pyrProg').style.width=((pyrIdx+1)/tiers.length*100)+'%';
 }
-document.querySelectorAll('.tier').forEach(b=>b.onclick=()=>setTier(+b.dataset.tier));
+document.querySelectorAll('.ptab').forEach(b=>b.onclick=()=>setTier(+b.dataset.tier));
 document.getElementById('pyrPrev').onclick=()=>setTier(pyrIdx-1);
 document.getElementById('pyrNext').onclick=()=>setTier(pyrIdx+1);
 setTier(0);
