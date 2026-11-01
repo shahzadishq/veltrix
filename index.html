@@ -111,7 +111,14 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 /* section background video */
 .bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.3;pointer-events:none}
 .bg-shade{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(11,9,7,.5),rgba(11,9,7,.9))}
-#notes .wrap,#pyramid .wrap{position:relative;z-index:1}
+#notes .wrap,#pyramid .wrap,#discovery .wrap{position:relative;z-index:1}
+/* prominent section films */
+#notes .bg-video{opacity:.95}
+#notes .bg-shade{background:linear-gradient(90deg,rgba(11,9,7,.96) 0%,rgba(11,9,7,.55) 22%,rgba(11,9,7,.06) 50%,rgba(11,9,7,.55) 78%,rgba(11,9,7,.96) 100%)}
+#pyramid .bg-video{opacity:.82}
+#pyramid .bg-shade{background:radial-gradient(ellipse at 50% 50%,rgba(11,9,7,.9) 34%,rgba(11,9,7,.5) 100%)}
+#discovery .bg-video{opacity:.85}
+#discovery .bg-shade{background:linear-gradient(rgba(11,9,7,.8),rgba(11,9,7,.6) 45%,rgba(11,9,7,.88))}
 
 /* NOTES — three columns with edge arrows */
 .notes-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:40px;align-items:center}
@@ -143,7 +150,9 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .story-visual .stamp{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:16px 20px;font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--text);background:linear-gradient(0deg,rgba(11,9,7,.85),transparent);z-index:2}
 
 /* PYRAMID */
-.pyr-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.pyr-grid{display:flex;flex-direction:column;align-items:center;gap:46px;max-width:780px;margin-inline:auto;text-align:center}
+.pyramid{width:100%;max-width:520px}
+.pyr-detail{width:100%}
 .pyramid{display:flex;flex-direction:column;align-items:center;gap:8px}
 .tier{border:1px solid var(--line);padding:22px 10px;text-align:center;transition:.4s;clip-path:polygon(var(--c) 0,calc(100% - var(--c)) 0,100% 100%,0 100%);width:100%;background:rgba(11,9,7,.5)}
 .tier:nth-child(1){--c:38%;max-width:520px}
@@ -245,6 +254,8 @@ footer li a:hover{color:var(--text)}
   .notes-grid{grid-template-columns:1fr;gap:40px}
   .notes-visual{order:-1;min-height:360px}
   .note-edge{display:none}
+  .notes-visual{min-height:320px}
+  #notes .bg-shade{background:rgba(11,9,7,.84)}
   .hero{min-height:auto;padding-top:120px}
   .foot-top{grid-template-columns:1fr;gap:28px}
   .foot-grid{grid-template-columns:1fr 1fr}
@@ -293,7 +304,7 @@ footer li a:hover{color:var(--text)}
   </video>
   <div class="hero-overlay"></div>
   <canvas id="smoke" aria-hidden="true"></canvas>
-  <div class="wrap hero-inner">
+  <div class="wrap"><div class="hero-inner">
     <span class="eyebrow">Premium Collection</span>
     <h1>Timeless<em>Elegance</em></h1>
     <p class="lede">A bespoke artisanal elixir born in the heart of Paris, blending smoked damask rose, golden amber resin and velvety nocturnal musk into an immortal sillage.</p>
@@ -302,7 +313,7 @@ footer li a:hover{color:var(--text)}
       <a href="#shop" class="btn solid">Discover More <span aria-hidden="true">→</span></a>
       <a href="#notes" class="btn ghost">View Notes</a>
     </div>
-  </div>
+  </div></div>
   <button class="hero-mute" id="muteBtn" aria-pressed="false">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/></svg>
     <span id="muteLabel">Unmute Film</span>
@@ -342,10 +353,7 @@ footer li a:hover{color:var(--text)}
       </div>
       <div class="note-list" id="noteChips"></div>
     </div>
-    <div class="notes-visual reveal">
-      <div class="halo"></div>
-      <video src="assets/card_perfume_loop.webm" poster="assets/card_perfume_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
-    </div>
+    <div class="notes-visual reveal" aria-hidden="true"></div>
     <div class="profile-panel reveal">
       <span class="eyebrow">Fragrance Profile</span>
       <div class="big"><span id="profNum">0</span><span>°</span></div>
@@ -402,20 +410,14 @@ footer li a:hover{color:var(--text)}
 </section>
 
 <section class="disc" id="discovery">
+  <video class="bg-video" poster="assets/card_perfume_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="assets/card_perfume_loop.webm" type="video/webm">
+  </video>
+  <div class="bg-shade"></div>
   <div class="wrap reveal">
     <span class="mark">◆ JANUARY / COLLECTION</span>
     <h2>More Than a<br><em>Parfum.</em></h2>
     <p>A sensory invocation of raw ingredients, rare botanicals and eternal Paris elegance — macerated in French oak for 180 days to unlock an unprecedented olfactory depth.</p>
-    <div class="cta-videos">
-      <figure>
-        <video src="assets/product2_video.webm" poster="assets/product2_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Discovery film one"></video>
-        <figcaption>Hand-poured 5 ml vials</figcaption>
-      </figure>
-      <figure>
-        <video src="assets/product3_video.webm" poster="assets/product3_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Discovery film two"></video>
-        <figcaption>Five signature scents</figcaption>
-      </figure>
-    </div>
     <div class="circle-mark">◇ THE CIRCLE</div>
     <div class="perks"><span>5 × 5 ML DISCOVERY VIALS</span><span>$45 VOUCHER CREDITED BACK</span><span>INSURED GLOBAL DELIVERY</span></div>
     <button class="btn solid" data-add="6">A Sensual Journey Starts Here</button>
