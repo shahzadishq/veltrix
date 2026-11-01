@@ -57,36 +57,29 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .icon-btn .cart-count{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-family:var(--sans);font-size:10px;letter-spacing:0}
 .menu-btn{display:none;font-family:var(--sans);font-size:11px;letter-spacing:.24em}
 
-/* HERO */
-.hero{padding:150px 0 90px;border:0;overflow:hidden}
-#smoke{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative}
-.hero h1{font-size:clamp(46px,7vw,96px);line-height:.98;margin:22px 0 26px}
+/* HERO — full-bleed background film */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:150px 0 120px;border:0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,6,5,.95) 0%,rgba(8,6,5,.72) 42%,rgba(8,6,5,.3) 72%,rgba(8,6,5,.55) 100%)}
+#smoke{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.4;z-index:1}
+.hero-inner{position:relative;z-index:2;max-width:650px}
+.hero h1{font-size:clamp(46px,7.5vw,108px);line-height:.96;margin:22px 0 26px}
 .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--gold-soft);letter-spacing:0;display:block}
-.hero p.lede{max-width:30em;color:#cfc4b1;font-size:21px}
+.hero p.lede{max-width:32em;color:#dcd2bf;font-size:21px}
 .price-line{display:flex;gap:14px;align-items:center;margin:30px 0 36px;font-family:var(--sans);font-size:12px;letter-spacing:.25em;color:var(--muted)}
 .price-line strong{font-family:var(--display);font-size:30px;color:var(--text);letter-spacing:.04em;font-weight:400}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-.hero-stage{position:relative;display:grid;place-items:center;min-height:540px}
+.hero-mute{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:10px;font-family:var(--sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);background:rgba(11,9,7,.55);border:1px solid var(--line);border-radius:40px;padding:12px 22px;backdrop-filter:blur(8px);transition:.3s}
+.hero-mute:hover{border-color:var(--gold);color:var(--gold-soft);background:rgba(11,9,7,.82)}
+.hero-mute svg{width:14px;height:14px;fill:var(--gold)}
 .halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(201,164,92,.38),rgba(201,164,92,.06) 55%,transparent 70%);filter:blur(10px);animation:pulse 6s ease-in-out infinite}
-.ring{position:absolute;width:88%;aspect-ratio:1;border:1px solid var(--line);border-radius:50%;animation:spin 60s linear infinite}
-.ring::after{content:"";position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:var(--gold)}
-.hero-media{width:min(400px,82%);position:relative;animation:float 7s ease-in-out infinite;filter:drop-shadow(0 40px 50px rgba(0,0,0,.7));z-index:1}
-.hero-media video{width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
-.unmute{position:absolute;right:10px;bottom:10px;z-index:3;display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--text);background:rgba(11,9,7,.72);border:1px solid var(--line);border-radius:30px;padding:9px 16px;backdrop-filter:blur(6px);transition:.3s}
-.unmute:hover{border-color:var(--gold);color:var(--gold-soft)}
-.unmute svg{width:11px;height:11px;fill:var(--gold)}
-.hero-tag{position:absolute;right:2%;top:12%;font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--muted);border-left:1px solid var(--gold);padding-left:12px;line-height:1.9;z-index:2}
-@keyframes float{50%{transform:translateY(-18px) rotate(-1deg)}}
 @keyframes pulse{50%{transform:scale(1.08);opacity:.75}}
-@keyframes spin{to{transform:rotate(360deg)}}
 
-/* COLLECTION — centered carousel */
+/* COLLECTION — centered infinite carousel */
 .counter{font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:var(--muted)}
 .counter b{color:var(--gold);font-weight:400}
 .car-stage{position:relative;overflow:hidden;padding:30px 0 10px}
 .car-track{display:flex;gap:26px;will-change:transform;transition:transform .6s cubic-bezier(.2,.8,.2,1);touch-action:pan-y;align-items:center}
-.car-track.drag{transition:none}
 .ccard{width:300px;flex:none;background:linear-gradient(180deg,var(--ink-2),#0e0b08);border:1px solid var(--line);padding:24px 22px 22px;position:relative;transition:transform .5s,opacity .5s,border-color .4s;opacity:.4;transform:scale(.82);filter:saturate(.85)}
 .ccard.on{opacity:1;transform:scale(1.04);border-color:rgba(201,164,92,.55);filter:none;box-shadow:0 30px 60px rgba(0,0,0,.55)}
 .ccard .num{font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--muted)}
@@ -98,7 +91,6 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .cmedia.vid{opacity:0}
 .ccard.on .cmedia.vid{opacity:1}
 .ccard.on .cmedia.poster{opacity:0}
-.ccard .stage svg{height:260px;width:auto;position:relative}
 .ccard h3{font-size:19px;margin:16px 0 4px}
 .ccard .fam{font-style:italic;color:var(--muted);font-size:16px}
 .ccard .row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
@@ -110,7 +102,7 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .mini.add{background:var(--gold);color:var(--ink);border-color:var(--gold)}
 .mini.add:hover{background:var(--gold-soft);color:var(--ink)}
 .car-nav{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:34px}
-.car-arrow{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:.3s}
+.car-arrow{width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:.3s;flex:none}
 .car-arrow:hover{border-color:var(--gold);background:rgba(201,164,92,.1);color:var(--gold-soft)}
 .car-arrow svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}
 .car-prog{width:min(240px,42vw);height:2px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
@@ -121,28 +113,24 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .bg-shade{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(11,9,7,.5),rgba(11,9,7,.9))}
 #notes .wrap,#pyramid .wrap{position:relative;z-index:1}
 
-/* NOTES — three columns */
+/* NOTES — three columns with edge arrows */
 .notes-grid{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:40px;align-items:center}
-.notes-switch{display:flex;align-items:center;gap:14px;margin-top:20px}
-.note-arrow{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex:none;transition:.3s}
-.note-arrow:hover{border-color:var(--gold);color:var(--gold-soft)}
-.note-arrow svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
-.tabs{display:flex;gap:6px;margin:26px 0 20px;flex-wrap:wrap}
+.note-edge{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:rgba(11,9,7,.5);backdrop-filter:blur(6px);transition:.3s;color:var(--text)}
+.note-edge:hover{border-color:var(--gold);color:var(--gold-soft)}
+.note-edge svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}
+.note-edge.left{left:24px}
+.note-edge.right{right:24px}
+.tabs{display:flex;gap:6px;margin:26px 0 22px;flex-wrap:wrap}
 .tab{font-family:var(--sans);font-size:11px;letter-spacing:.24em;padding:12px 18px;border:1px solid var(--line);transition:.3s}
 .tab[aria-selected="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.note-text{font-size:21px;line-height:1.4;font-style:italic;font-weight:300;min-height:4em;max-width:24em;color:#cfc4b1}
-.note-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.note-text{font-size:20px;line-height:1.45;font-style:italic;font-weight:300;color:#cfc4b1}
+.note-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .chip{font-family:var(--sans);font-size:11px;letter-spacing:.14em;padding:7px 14px;border-radius:30px;border:1px solid var(--line);color:var(--gold-soft)}
 .notes-visual{position:relative;display:grid;place-items:center;min-height:460px}
 .notes-visual video{width:min(360px,100%);height:auto;border-radius:10px;border:1px solid var(--line)}
 .notes-visual .halo{width:90%}
-.profile-panel .big{font-family:var(--display);font-weight:400;font-size:clamp(56px,7vw,88px);color:var(--gold);line-height:1;margin:6px 0 14px}
-.profile-panel .big span{font-size:.4em;color:var(--gold-soft);vertical-align:.5em}
-.profile{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:26px}
-.profile div{background:var(--ink);padding:16px 18px}
-.profile span{font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--muted);display:block;margin-bottom:6px}
-.bar{height:3px;background:rgba(255,255,255,.08);margin-top:10px}
-.bar i{display:block;height:100%;background:var(--gold);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.profile-panel .big{font-family:var(--display);font-weight:400;font-size:clamp(60px,8vw,96px);color:var(--gold);line-height:1;margin:6px 0 14px}
+.profile-panel .big span:last-child{font-size:.45em;color:var(--gold-soft);vertical-align:.55em}
 
 /* STORY */
 .story{background:radial-gradient(ellipse at 80% 50%,rgba(201,164,92,.10),transparent 60%)}
@@ -171,7 +159,7 @@ nav.scrolled{background:rgba(11,9,7,.86);backdrop-filter:blur(14px);border-color
 .pyr-meta{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
 .pyr-meta div{background:var(--ink);padding:18px}
 .pyr-meta span{font-family:var(--sans);font-size:10px;letter-spacing:.3em;color:var(--muted);display:block}
-.ess{margin-top:22px;font-style:italic;color:var(--gold-soft);font-size:20px}
+.ess{margin-top:8px;font-style:italic;color:var(--gold-soft);font-size:20px}
 
 /* DISCOVERY */
 .disc{text-align:center;background:radial-gradient(ellipse at 50% 0,rgba(201,164,92,.16),transparent 60%)}
@@ -253,11 +241,11 @@ footer li a:hover{color:var(--text)}
   .links{display:none}
   .links.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:var(--ink-2);padding:24px 20px;gap:20px;border-bottom:1px solid var(--line)}
   .menu-btn{display:block}
-  .hero-grid,.story-grid,.pyr-grid{grid-template-columns:1fr;gap:50px}
+  .story-grid,.pyr-grid{grid-template-columns:1fr;gap:50px}
   .notes-grid{grid-template-columns:1fr;gap:40px}
   .notes-visual{order:-1;min-height:360px}
-  .hero{padding-top:120px}
-  .hero-stage{min-height:420px;order:-1}
+  .note-edge{display:none}
+  .hero{min-height:auto;padding-top:120px}
   .foot-top{grid-template-columns:1fr;gap:28px}
   .foot-grid{grid-template-columns:1fr 1fr}
   .modal-box{grid-template-columns:1fr}
@@ -285,7 +273,7 @@ footer li a:hover{color:var(--text)}
     </div>
     <div class="nav-tools">
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="links">MENU</button>
-      <a class="icon-btn" id="waLink" href="https://wa.me/923000000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <a class="icon-btn" id="waLink" href="https://wa.me/923106992969" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4A8 8 0 1 1 20 11.5Z"/><path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5l1-1.3 1.8.8c.2 1.2-.9 1.8-2 1.7-2.6-.2-5.5-3.1-5.7-5.7-.1-1.1.5-2.2 1.7-2l.7 1.8-1 1.4Z" stroke="none" fill="currentColor"/></svg>
       </a>
       <button class="icon-btn" id="searchBtn" aria-label="Browse collection">
@@ -300,31 +288,25 @@ footer li a:hover{color:var(--text)}
 </nav>
 
 <header class="hero" id="home">
+  <video class="hero-bg" id="heroVid" poster="assets/card_perfume_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="assets/perfume_hero.webm" type="video/webm">
+  </video>
+  <div class="hero-overlay"></div>
   <canvas id="smoke" aria-hidden="true"></canvas>
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Premium Collection</span>
-      <h1>Veltrix Noir<em>Luxury Dreams</em></h1>
-      <p class="lede">A bespoke artisanal elixir born in the heart of Paris, blending smoked damask rose, golden amber resin and velvety nocturnal musk into an immortal sillage.</p>
-      <div class="price-line"><strong>$340.00</strong> · 100 ML EXTRAIT DE PARFUM</div>
-      <div class="cta-row">
-        <a href="#shop" class="btn solid">Discover More <span aria-hidden="true">→</span></a>
-        <a href="#notes" class="btn ghost">View Notes</a>
-      </div>
-    </div>
-    <div class="hero-stage">
-      <div class="halo"></div>
-      <div class="ring"></div>
-      <div class="hero-media">
-        <video id="heroVid" src="assets/perfume_hero.webm" poster="assets/card_perfume_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Veltrix Noir hero film"></video>
-        <button class="unmute" id="unmuteBtn" aria-pressed="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/></svg>
-          <span id="unmuteLabel">Unmute</span>
-        </button>
-      </div>
-      <div class="hero-tag">EXTRAIT · 28%<br>CONCENTRATION<br>12 HR SILLAGE</div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Premium Collection</span>
+    <h1>Timeless<em>Elegance</em></h1>
+    <p class="lede">A bespoke artisanal elixir born in the heart of Paris, blending smoked damask rose, golden amber resin and velvety nocturnal musk into an immortal sillage.</p>
+    <div class="price-line"><strong>$340.00</strong> · 100 ML EXTRAIT DE PARFUM</div>
+    <div class="cta-row">
+      <a href="#shop" class="btn solid">Discover More <span aria-hidden="true">→</span></a>
+      <a href="#notes" class="btn ghost">View Notes</a>
     </div>
   </div>
+  <button class="hero-mute" id="muteBtn" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/></svg>
+    <span id="muteLabel">Unmute Film</span>
+  </button>
 </header>
 
 <section id="shop">
@@ -332,8 +314,8 @@ footer li a:hover{color:var(--text)}
     <div><span class="eyebrow">The Wardrobe</span><h2>Product Collection</h2></div>
     <div class="counter">FLACON <b id="flaconNo">01</b> OF <span id="flaconTot">06</span></div>
   </div>
+  <div class="car-stage"><div class="car-track" id="track"></div></div>
   <div class="wrap">
-    <div class="car-stage"><div class="car-track" id="track"></div></div>
     <div class="car-nav">
       <button class="car-arrow" id="carPrev" aria-label="Previous fragrance"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
       <div class="car-prog"><i id="carProg"></i></div>
@@ -347,21 +329,18 @@ footer li a:hover{color:var(--text)}
     <source src="assets/fragrance_notes_bg.mp4" type="video/mp4">
   </video>
   <div class="bg-shade"></div>
+  <button class="note-edge left" id="notePrev" aria-label="Previous note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+  <button class="note-edge right" id="noteNext" aria-label="Next note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
   <div class="wrap notes-grid">
     <div class="reveal">
       <span class="eyebrow">Veltrix Noir</span>
-      <h2 style="font-size:clamp(30px,4vw,48px);margin-top:14px">Fragrance Notes</h2>
+      <h2 style="font-size:clamp(30px,4vw,48px);margin:14px 0 0">Fragrance Notes</h2>
       <div class="tabs" role="tablist">
         <button class="tab" role="tab" aria-selected="true" data-note="0">TOP NOTES</button>
         <button class="tab" role="tab" aria-selected="false" data-note="1">HEART NOTES</button>
         <button class="tab" role="tab" aria-selected="false" data-note="2">BASE NOTES</button>
       </div>
-      <p class="note-text" id="noteText"></p>
       <div class="note-list" id="noteChips"></div>
-      <div class="notes-switch">
-        <button class="note-arrow" id="notePrev" aria-label="Previous note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
-        <button class="note-arrow" id="noteNext" aria-label="Next note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
-      </div>
     </div>
     <div class="notes-visual reveal">
       <div class="halo"></div>
@@ -369,13 +348,9 @@ footer li a:hover{color:var(--text)}
     </div>
     <div class="profile-panel reveal">
       <span class="eyebrow">Fragrance Profile</span>
-      <div class="big"><span id="profNum">0</span><span>%</span></div>
+      <div class="big"><span id="profNum">0</span><span>°</span></div>
       <span class="eyebrow" id="profCap" style="color:var(--muted)">Top Intensity</span>
-      <div class="profile">
-        <div><span>LONGEVITY</span>12 hours<div class="bar"><i id="b1" style="width:90%"></i></div></div>
-        <div><span>SILLAGE</span>Strong<div class="bar"><i id="b2" style="width:80%"></i></div></div>
-        <div><span>SEASON</span>Autumn · Winter<div class="bar"><i id="b3" style="width:70%"></i></div></div>
-      </div>
+      <p class="note-text" id="noteDesc" style="margin-top:22px"></p>
     </div>
   </div>
 </section>
@@ -418,6 +393,11 @@ footer li a:hover{color:var(--text)}
       </div>
       <div class="pyr-detail reveal" id="pyrDetail"></div>
     </div>
+    <div class="car-nav" style="margin-top:46px">
+      <button class="car-arrow" id="pyrPrev" aria-label="Previous accord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+      <div class="car-prog"><i id="pyrProg" style="width:33.33%"></i></div>
+      <button class="car-arrow" id="pyrNext" aria-label="Next accord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+    </div>
   </div>
 </section>
 
@@ -458,14 +438,14 @@ footer li a:hover{color:var(--text)}
     <div class="foot-grid">
       <div class="foot-brand">
         <b>VELTRIX</b><small>PARFUMS PARIS</small>
-        <p style="color:var(--muted);font-size:16px;max-width:22em;margin-top:16px">Small-batch extraits, blended by hand. This is a demo store; brand and products are placeholders.</p>
+        <p style="color:var(--muted);font-size:16px;max-width:22em;margin-top:16px">Small-batch extraits, blended by hand in the heart of Paris.</p>
         <div class="pays"><span class="pay">Amex</span><span class="pay">Apple Pay</span><span class="pay">Visa</span><span class="pay">Mastercard</span></div>
       </div>
       <div><h4>ABOUT US</h4><ul><li><a href="#about">The Atelier's Lineage</a></li><li><a href="#about">Artisan Process</a></li><li><a href="#pyramid">Master Perfumer</a></li></ul></div>
-      <div><h4>CUSTOMER CARE</h4><ul><li><a href="https://wa.me/923000000000" target="_blank" rel="noopener">WhatsApp: +92 300 0000000</a></li><li><a href="#shop">Return Eligibility</a></li><li><a href="#about">Proof of Provenance</a></li></ul></div>
-      <div><h4>CONTACT US</h4><ul><li>Maison Veltrix · Paris</li><li>12 Rue de la Paix</li><li>concierge@veltrix.example</li><li>Instagram · @veltrix</li></ul></div>
+      <div><h4>CUSTOMER CARE</h4><ul><li><a href="https://wa.me/923106992969" target="_blank" rel="noopener">WhatsApp: +92 310 6992969</a></li><li><a href="#shop">Return Eligibility</a></li><li><a href="#about">Proof of Provenance</a></li></ul></div>
+      <div><h4>CONTACT US</h4><ul><li>Maison Veltrix · Paris</li><li><a href="tel:+923106992969">Phone: +92 310 6992969</a></li><li><a href="mailto:shezigull5@gmail.com">shezigull5@gmail.com</a></li><li>Instagram · @veltrix</li></ul></div>
     </div>
-    <div class="legal"><span>© 2026 VELTRIX PARFUMS · DEMO · ALL RIGHTS RESERVED</span><span>EXTRAIT DE PARFUM · HAND-BLENDED</span></div>
+    <div class="legal"><span>© 2026 VELTRIX PARFUMS · ALL RIGHTS RESERVED</span><span>EXTRAIT DE PARFUM · HAND-BLENDED</span></div>
   </div>
 </footer>
 
@@ -476,7 +456,7 @@ footer li a:hover{color:var(--text)}
   <div class="dr-foot">
     <div class="tot"><span>TOTAL</span><b id="drTotal">$0.00</b></div>
     <a class="btn solid" id="waBtn" href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
-    <p class="dr-note">Opens WhatsApp with your order filled in (+92 300 0000000).</p>
+    <p class="dr-note">Opens WhatsApp with your order filled in (+92 310 6992969).</p>
   </div>
 </aside>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
@@ -486,7 +466,7 @@ footer li a:hover{color:var(--text)}
 
 <script>
 document.documentElement.classList.add('js');
-const WA_NUMBER = '923000000000';
+const WA_NUMBER = '923106992969';
 
 const products = [
   {name:'Veltrix Noir',short:'Noir',fam:'Woody · Oriental',price:340,c1:'#5a2c0a',c2:'#d08a3a',cap:'#141110',glow:'rgba(216,154,74,.45)',
@@ -518,8 +498,7 @@ function bottle(p,opts={}){
     return `<svg viewBox="0 0 60 150" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" x2="1"><stop offset="0" stop-color="${p.c1}"/><stop offset=".55" stop-color="${p.c2}"/><stop offset="1" stop-color="${p.c1}"/></linearGradient></defs>
     <rect x="22" y="4" width="16" height="26" rx="2" fill="${p.cap}" stroke="rgba(201,164,92,.6)" stroke-width=".6"/>
     <rect x="16" y="30" width="28" height="112" rx="6" fill="url(#${id})" opacity=".92"/>
-    <rect x="16" y="30" width="28" height="112" rx="6" fill="none" stroke="rgba(255,255,255,.25)"/>
-    <rect x="20" y="36" width="4" height="96" rx="2" fill="rgba(255,255,255,.28)"/></svg>`;
+    <rect x="16" y="30" width="28" height="112" rx="6" fill="none" stroke="rgba(255,255,255,.25)"/></svg>`;
   }
   return `<svg viewBox="0 0 160 300" aria-hidden="true"><defs>
     <linearGradient id="${id}l" x1="0" x2="1"><stop offset="0" stop-color="${p.c1}"/><stop offset=".5" stop-color="${p.c2}"/><stop offset="1" stop-color="${p.c1}"/></linearGradient>
@@ -551,105 +530,123 @@ function thumb(p){
   return bottle(p);
 }
 
-/* play background / cta videos only while on screen */
+/* play background / cta / modal videos only while on screen */
 const vio=('IntersectionObserver'in window)?new IntersectionObserver(es=>es.forEach(en=>{
   const v=en.target;if(en.isIntersecting){const pr=v.play&&v.play();if(pr&&pr.catch)pr.catch(()=>{});}else if(v.pause){v.pause();}
 }),{threshold:.15}):null;
 function observeVideos(root){ if(!vio)return;(root||document).querySelectorAll('video.bg-video,.cta-videos video,.notes-visual video,.m-vis video').forEach(v=>vio.observe(v)); }
 
 (function(){
+/* ---------- infinite centered carousel ---------- */
 const visible=products.filter(p=>!p.hidden);
+const n=visible.length;
 const track=document.getElementById('track');
-document.getElementById('flaconTot').textContent=String(visible.length).padStart(2,'0');
-
-/* build cards */
-track.innerHTML=visible.map((p,i)=>`
-  <article class="ccard" data-idx="${i}" style="--glow:${p.glow}">
-    <div class="num">Nº 0${i+1} · ${p.fam.toUpperCase()}</div>
+document.getElementById('flaconTot').textContent=String(n).padStart(2,'0');
+function cardHTML(p,real){ return `
+  <article class="ccard" data-idx="${real}" style="--glow:${p.glow}">
+    <div class="num">Nº 0${real+1} · ${p.fam.toUpperCase()}</div>
     <div class="stage">
       <img class="cmedia poster" src="${p.poster}" alt="${p.name}">
       <video class="cmedia vid" muted loop playsinline preload="none" poster="${p.poster}" aria-hidden="true"><source src="${p.video}" type="video/${p.video.endsWith('.mp4')?'mp4':'webm'}"></video>
     </div>
     <h3>${p.name}</h3><div class="fam">${p.top.split(',')[0]} · ${p.base.split(',')[0]}</div>
     <div class="row"><span class="pr">${fmt(p.price)}</span>
-    <div class="acts"><button class="mini" data-inspect="${i}">INSPECT</button><button class="mini add" data-add="${i}">ACQUIRE</button></div></div>
-  </article>`).join('');
+    <div class="acts"><button class="mini" data-inspect="${real}">INSPECT</button><button class="mini add" data-add="${real}">ACQUIRE</button></div></div>
+  </article>`; }
+let html='';
+for(let s=0;s<3;s++) visible.forEach((p,i)=>html+=cardHTML(p,i));
+track.innerHTML=html;
 
 const stageEl=track.parentElement;
 const cards=[...track.querySelectorAll('.ccard')];
-let active=0;
-function layout(){
-  const cw=cards[0].offsetWidth, gap=26, step=cw+gap;
-  const tx=stageEl.clientWidth/2 - active*step - cw/2;
+let dom=n, anim=true;
+function step(){ const cw=cards[0].offsetWidth; return {cw,s:cw+26}; }
+function paint(){
+  const {cw,s}=step();
+  const tx=stageEl.clientWidth/2 - dom*s - cw/2;
+  track.style.transition=anim?'':'none';
   track.style.transform=`translateX(${tx}px)`;
   cards.forEach((c,i)=>{
-    const on=i===active; c.classList.toggle('on',on);
+    const on=i===dom; c.classList.toggle('on',on);
     const v=c.querySelector('video');
-    if(v){ if(on){const pr=v.play();if(pr&&pr.catch)pr.catch(()=>{});} else { v.pause(); } }
+    if(v){ if(on){const pr=v.play();if(pr&&pr.catch)pr.catch(()=>{});} else v.pause(); }
   });
-  document.getElementById('flaconNo').textContent=String(active+1).padStart(2,'0');
-  document.getElementById('carProg').style.width=((active+1)/visible.length*100)+'%';
+  const real=((dom%n)+n)%n;
+  document.getElementById('flaconNo').textContent=String(real+1).padStart(2,'0');
+  document.getElementById('carProg').style.width=((real+1)/n*100)+'%';
 }
-function go(i){ active=(i+visible.length)%visible.length; layout(); }
-document.getElementById('carPrev').onclick=()=>go(active-1);
-document.getElementById('carNext').onclick=()=>go(active+1);
+function normalize(){
+  if(dom<n||dom>=2*n){ const real=((dom%n)+n)%n; dom=n+real; anim=false; paint(); void track.offsetWidth; anim=true; }
+}
+track.addEventListener('transitionend',e=>{ if(e.target===track&&e.propertyName==='transform') normalize(); });
+function go(d){ anim=true; dom+=d; paint(); }
+document.getElementById('carPrev').onclick=()=>go(-1);
+document.getElementById('carNext').onclick=()=>go(1);
+
+/* swipe / drag */
+let sx=0,sdrag=false,smoved=0,dragged=false;
+stageEl.addEventListener('pointerdown',e=>{sdrag=true;dragged=false;smoved=0;sx=e.clientX;});
+stageEl.addEventListener('pointermove',e=>{ if(!sdrag)return; smoved=e.clientX-sx; if(Math.abs(smoved)>6)dragged=true;
+  const {cw,s}=step(); track.style.transition='none';
+  track.style.transform=`translateX(${(stageEl.clientWidth/2-dom*s-cw/2)+smoved}px)`; });
+function sEnd(){ if(!sdrag)return; sdrag=false; anim=true; if(Math.abs(smoved)>60) go(smoved<0?1:-1); else paint(); }
+stageEl.addEventListener('pointerup',sEnd); stageEl.addEventListener('pointercancel',sEnd); stageEl.addEventListener('pointerleave',sEnd);
 cards.forEach((c,i)=>c.addEventListener('click',e=>{
   if(e.target.closest('[data-add],[data-inspect]'))return;
-  if(i!==active){go(i);} }));
-
-/* swipe / drag to step */
-let sx=0,sdrag=false,smoved=0;
-stageEl.addEventListener('pointerdown',e=>{sdrag=true;smoved=0;sx=e.clientX;track.classList.add('drag');});
-stageEl.addEventListener('pointermove',e=>{if(!sdrag)return;smoved=e.clientX-sx;track.style.transform=`translateX(${(stageEl.clientWidth/2-active*(cards[0].offsetWidth+26)-cards[0].offsetWidth/2)+smoved}px)`;});
-function sEnd(){ if(!sdrag)return; sdrag=false; track.classList.remove('drag');
-  if(Math.abs(smoved)>60){ go(active + (smoved<0?1:-1)); } else { layout(); } }
-stageEl.addEventListener('pointerup',sEnd); stageEl.addEventListener('pointercancel',sEnd); stageEl.addEventListener('pointerleave',sEnd);
-stageEl.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)>Math.abs(e.deltaY)+4){e.preventDefault();if(Math.abs(e.deltaX)>30)go(active+(e.deltaX>0?1:-1));}},{passive:false});
-
-window.addEventListener('resize',layout);
-requestAnimationFrame(layout);
+  if(dragged){dragged=false;return;}
+  if(i!==dom) go(i-dom);
+}));
+let wlock=false;
+stageEl.addEventListener('wheel',e=>{ if(Math.abs(e.deltaX)>Math.abs(e.deltaY)+4){ e.preventDefault(); if(!wlock&&Math.abs(e.deltaX)>20){ wlock=true; go(e.deltaX>0?1:-1); setTimeout(()=>wlock=false,500);} } },{passive:false});
+window.addEventListener('resize',()=>{ anim=false; paint(); void track.offsetWidth; anim=true; });
+requestAnimationFrame(()=>{ anim=false; paint(); void track.offsetWidth; anim=true; });
 observeVideos(document);
 
-/* notes tabs + profile */
+/* ---------- notes tabs + profile ---------- */
 const notes=[
-  {txt:'A bright, spiced opening of saffron threads and pink pepper that lifts the oud in the first minutes.',chips:['Saffron','Pink Pepper','Bergamot'],v:82,cap:'Top Intensity',bars:[60,85,70]},
-  {txt:'Smoked Taif rose wraps around aged Cambodian oud. This is the scent people remember you by.',chips:['Taif Rose','Cambodian Oud','Incense'],v:94,cap:'Heart Intensity',bars:[85,90,75]},
-  {txt:'Labdanum resin, soft musk and vetiver root. Warm, close to the skin, lasting until morning.',chips:['Labdanum','White Musk','Vetiver'],v:76,cap:'Base Intensity',bars:[95,65,80]}
+  {txt:'A bright, spiced opening of saffron threads and pink pepper that lifts the oud in the first minutes.',chips:['Saffron','Pink Pepper','Bergamot'],v:82,cap:'Top Intensity'},
+  {txt:'Smoked Taif rose wraps around aged Cambodian oud. This is the scent people remember you by.',chips:['Taif Rose','Cambodian Oud','Incense'],v:94,cap:'Heart Intensity'},
+  {txt:'Labdanum resin, soft musk and vetiver root. Warm, close to the skin, lasting until morning.',chips:['Labdanum','White Musk','Vetiver'],v:76,cap:'Base Intensity'}
 ];
 let noteIdx=0;
 function setNote(i){
   noteIdx=(i+notes.length)%notes.length;
   document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.note==noteIdx));
-  const n=notes[noteIdx];
-  document.getElementById('noteText').textContent=n.txt;
-  document.getElementById('noteChips').innerHTML=n.chips.map(c=>`<span class="chip">${c}</span>`).join('');
-  document.getElementById('profCap').textContent=n.cap;
-  ['b1','b2','b3'].forEach((id,k)=>document.getElementById(id).style.width=n.bars[k]+'%');
+  const nt=notes[noteIdx];
+  document.getElementById('noteChips').innerHTML=nt.chips.map(c=>`<span class="chip">${c}</span>`).join('');
+  document.getElementById('noteDesc').textContent=nt.txt;
+  document.getElementById('profCap').textContent=nt.cap;
   const el=document.getElementById('profNum');let s=+el.textContent||0;const st=performance.now();
-  (function tick(now){const p=Math.min(1,(now-st)/800);el.textContent=Math.round(s+(n.v-s)*p);if(p<1)requestAnimationFrame(tick);})(st);
+  (function tick(now){const p=Math.min(1,(now-st)/800);el.textContent=Math.round(s+(nt.v-s)*p);if(p<1)requestAnimationFrame(tick);})(st);
 }
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>setNote(+b.dataset.note));
 document.getElementById('notePrev').onclick=()=>setNote(noteIdx-1);
 document.getElementById('noteNext').onclick=()=>setNote(noteIdx+1);
 setNote(0);
 
-/* pyramid */
+/* ---------- pyramid ---------- */
 const tiers=[
   {time:'0 — 15 MINUTES',title:'Luminous Opening Accord',p:'A sparkling citrus-spiced crescendo crafted with cold-expressed Italian bergamot and pink peppercorns that instantly awakens the senses.',ess:'Calabrian Bergamot · Pink Peppercorn · Crisp Mandarin Blossom',diff:'Fast, bright',arc:'Close to wide'},
   {time:'15 MIN — 4 HOURS',title:'The Smouldering Heart',p:'Smoked Taif rose and aged Cambodian oud take over as the skin warms — the signature people notice when you walk past.',ess:'Taif Rose · Cambodian Oud · Incense',diff:'Steady, warm',arc:'Wide trail'},
   {time:'4 — 12 HOURS',title:'The Resinous Base',p:'Heavy labdanum resins and soft musks linger longest. By evening only a warm, personal skin scent remains.',ess:'Labdanum · White Musk · Vetiver',diff:'Slow, deep',arc:'Skin close'}
 ];
+let pyrIdx=0;
 function setTier(i){
-  document.querySelectorAll('.tier').forEach(b=>{const on=b.dataset.tier==i;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
-  const d=tiers[i];
+  pyrIdx=(i+tiers.length)%tiers.length;
+  document.querySelectorAll('.tier').forEach(b=>{const on=b.dataset.tier==pyrIdx;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
+  const d=tiers[pyrIdx];
   document.getElementById('pyrDetail').innerHTML=`<span class="time">${d.time}</span><h3>${d.title}</h3><p>${d.p}</p>
+  <span class="eyebrow" style="color:var(--muted);display:block;margin-top:24px">Key Essence</span>
   <div class="ess">${d.ess}</div>
   <div class="pyr-meta"><div><span>DIFFUSION</span>${d.diff}</div><div><span>SILLAGE ARC</span>${d.arc}</div></div>`;
+  document.getElementById('pyrProg').style.width=((pyrIdx+1)/tiers.length*100)+'%';
 }
 document.querySelectorAll('.tier').forEach(b=>b.onclick=()=>setTier(+b.dataset.tier));
+document.getElementById('pyrPrev').onclick=()=>setTier(pyrIdx-1);
+document.getElementById('pyrNext').onclick=()=>setTier(pyrIdx+1);
 setTier(0);
 
-/* cart */
+/* ---------- cart ---------- */
 let cart={};
 try{cart=JSON.parse(localStorage.getItem('veltrix_cart')||'{}')}catch(e){cart={}}
 const save=()=>{try{localStorage.setItem('veltrix_cart',JSON.stringify(cart))}catch(e){}};
@@ -691,25 +688,25 @@ document.getElementById('cartBtn').onclick=openCart;
 document.getElementById('closeCart').onclick=closeAll;
 document.getElementById('searchBtn').onclick=()=>document.getElementById('shop').scrollIntoView({behavior:'smooth'});
 scrim.onclick=closeAll;
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();if(e.key==='ArrowRight'&&!e.target.closest('input'))return;});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
 renderCart();
 
-/* hero unmute */
-const heroVid=document.getElementById('heroVid'),unmuteBtn=document.getElementById('unmuteBtn'),unmuteLabel=document.getElementById('unmuteLabel');
-unmuteBtn.onclick=()=>{heroVid.muted=!heroVid.muted;const on=!heroVid.muted;unmuteBtn.setAttribute('aria-pressed',on);unmuteLabel.textContent=on?'Mute':'Unmute';if(on){const pr=heroVid.play();if(pr&&pr.catch)pr.catch(()=>{});}};
+/* ---------- hero film mute toggle ---------- */
+const heroVid=document.getElementById('heroVid'),muteBtn=document.getElementById('muteBtn'),muteLabel=document.getElementById('muteLabel');
+muteBtn.onclick=()=>{heroVid.muted=!heroVid.muted;const on=!heroVid.muted;muteBtn.setAttribute('aria-pressed',on);muteLabel.textContent=on?'Mute Film':'Unmute Film';if(on){const pr=heroVid.play();if(pr&&pr.catch)pr.catch(()=>{});}};
 
-/* nav */
+/* ---------- nav ---------- */
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
 const menuBtn=document.getElementById('menuBtn'),links=document.getElementById('links');
 menuBtn.onclick=()=>{const o=links.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o);};
 links.addEventListener('click',e=>{if(e.target.tagName==='A')links.classList.remove('open');});
 
-/* newsletter */
+/* ---------- newsletter ---------- */
 document.getElementById('subForm').addEventListener('submit',e=>{e.preventDefault();
-  document.getElementById('subMsg').textContent='Thank you. (Demo: this email is not saved anywhere yet.)';e.target.reset();});
+  document.getElementById('subMsg').textContent='Thank you — you have joined the Veltrix Circle.';e.target.reset();});
 
-/* reveal */
+/* ---------- reveal ---------- */
 const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('pending');io.unobserve(en.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pending');io.observe(el);}});
 
@@ -722,13 +719,13 @@ document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().
   let W,H,parts=[];
   function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
   size();addEventListener('resize',size);
-  for(let i=0;i<46;i++)parts.push({x:Math.random(),y:Math.random(),r:30+Math.random()*90,s:.0004+Math.random()*.0008,d:Math.random()*Math.PI*2});
+  for(let i=0;i<40;i++)parts.push({x:Math.random(),y:Math.random(),r:30+Math.random()*90,s:.0004+Math.random()*.0008,d:Math.random()*Math.PI*2});
   (function draw(){
     ctx.clearRect(0,0,W,H);
     parts.forEach(p=>{p.y-=p.s;p.d+=.004;if(p.y<-.2){p.y=1.2;p.x=Math.random();}
       const px=(p.x+Math.sin(p.d)*.03)*W,py=p.y*H;
       const g=ctx.createRadialGradient(px,py,0,px,py,p.r);
-      g.addColorStop(0,'rgba(201,164,92,.07)');g.addColorStop(1,'rgba(201,164,92,0)');
+      g.addColorStop(0,'rgba(201,164,92,.06)');g.addColorStop(1,'rgba(201,164,92,0)');
       ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,py,p.r,0,7);ctx.fill();});
     requestAnimationFrame(draw);
   })();
