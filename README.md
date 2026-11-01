@@ -1,7 +1,10 @@
-# Velora Parfums (demo)
+# Veltrix Parfums (demo)
 
-A single-page luxury perfume showcase: 3D glass bottles (Three.js), drag-and-fling product carousel, fragrance notes, olfactory pyramid, and a cart that sends orders to WhatsApp.
+A single-page luxury perfume showcase: a cinematic hero film, a drag-and-fling
+product carousel with looping product videos, video-backed fragrance notes and
+olfactory pyramid sections, a discovery-set CTA, and a cart that sends orders to
+WhatsApp.
 
-All products, prices and contact details are placeholders.
+All media lives in `assets/`. All products, prices and contact details are placeholders.
 
 Live: https://shahzadishq.github.io/veltrix/
